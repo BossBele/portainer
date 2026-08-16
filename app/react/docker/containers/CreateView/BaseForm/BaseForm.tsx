@@ -1,15 +1,13 @@
 import { useFormikContext } from 'formik';
 
 import { useCurrentEnvironment } from '@/react/hooks/useCurrentEnvironment';
-import { Authorized } from '@/react/hooks/useUser';
+// import { Authorized } from '@/react/hooks/useUser';
 import { AccessControlForm } from '@/react/portainer/access-control';
 import { AccessControlFormData } from '@/react/portainer/access-control/types';
-import { EnvironmentType } from '@/react/portainer/environments/types';
 import { NodeSelector } from '@/react/docker/agent/NodeSelector';
 import { useIsSwarm } from '@/react/docker/proxy/queries/useInfo';
 import { useEnvironmentId } from '@/react/hooks/useEnvironmentId';
 import { isAgentEnvironment } from '@/react/portainer/environments/utils';
-import { FeatureId } from '@/react/portainer/feature-flags/enums';
 
 import { FormSection } from '@@/form-components/FormSection';
 import { SwitchField } from '@@/form-components/SwitchField';
@@ -68,8 +66,6 @@ export function BaseForm({
 
   const environment = environmentQuery.data;
 
-  const canUseWebhook = environment.Type !== EnvironmentType.EdgeAgentOnDocker;
-
   return (
     <Widget>
       <Widget.Body>
@@ -110,7 +106,7 @@ export function BaseForm({
           </ImageConfigFieldset>
         </FormSection>
 
-        {canUseWebhook && (
+        {/* {canUseWebhook && (
           <Authorized authorizations="PortainerWebhookCreate" adminOnlyCE>
             <FormSection title="Webhook">
               <div className="form-group">
@@ -130,7 +126,7 @@ export function BaseForm({
               </div>
             </FormSection>
           </Authorized>
-        )}
+        )} */}
 
         <FormSection title="Network ports configuration">
           <div className="form-group">
