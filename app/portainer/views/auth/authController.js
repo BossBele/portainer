@@ -224,6 +224,7 @@ class AuthenticationController {
   async onInit() {
     try {
       const settings = await this.SettingsService.publicSettings();
+      this.customLoginBanner = settings.CustomLoginBanner;
       this.state.showOAuthLogin = settings.AuthenticationMethod === 3;
       this.state.showStandardLogin = !this.state.showOAuthLogin;
       this.state.OAuthLoginURI = settings.OAuthLoginURI;

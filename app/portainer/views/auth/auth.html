@@ -10,6 +10,10 @@
         </div>
         <img ng-if="ctrl.logo" ng-src="{{ ctrl.logo }}" class="simple-box-logo" />
       </div>
+      <div class="row" ng-if="ctrl.customLoginBanner">
+        <div class="col-sm-12 alert alert-info">{{ ctrl.customLoginBanner }}</div>
+      </div>
+
       <!-- !login box logo -->
 
       <div class="row p-5 text-center">

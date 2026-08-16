@@ -24,6 +24,8 @@ import (
 type settingsUpdatePayload struct {
 	// URL to a logo that will be displayed on the login page as well as on top of the sidebar. Will use default Portainer logo when value is empty string
 	LogoURL *string `example:"https://mycompany.mydomain.tld/logo.png"`
+	// The content in plaintext used to display in the login page. Will hide when value is empty string
+	CustomLoginBanner *string `example:"Only administrators are allowed to use this system."`
 	// A list of label name & value that will be used to hide containers when querying containers
 	BlackListedLabels []portainer.Pair
 	// Active authentication method for the Portainer instance. Valid values are: 1 for internal, 2 for LDAP, or 3 for oauth
@@ -153,6 +155,7 @@ func (handler *Handler) updateSettings(tx dataservices.DataStoreTx, payload sett
 	}
 
 	settings.LogoURL = *cmp.Or(payload.LogoURL, &settings.LogoURL)
+	settings.CustomLoginBanner = *cmp.Or(payload.CustomLoginBanner, &settings.CustomLoginBanner)
 	settings.TemplatesURL = *cmp.Or(payload.TemplatesURL, &settings.TemplatesURL)
 
 	// Update the global deployment options, and the environment deployment options if they have changed

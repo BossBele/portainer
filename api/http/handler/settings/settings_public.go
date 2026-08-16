@@ -13,6 +13,8 @@ import (
 type publicSettingsResponse struct {
 	// URL to a logo that will be displayed on the login page as well as on top of the sidebar. Will use default Portainer logo when value is empty string
 	LogoURL string `json:"LogoURL" example:"https://mycompany.mydomain.tld/logo.png"`
+	// The content in plaintext used to display in the login page. Will hide when value is empty string
+	CustomLoginBanner string `json:"CustomLoginBanner" example:"Only administrators are allowed to use this system."`
 	// Active authentication method for the Portainer instance. Valid values are: 1 for internal, 2 for LDAP, or 3 for oauth
 	AuthenticationMethod portainer.AuthenticationMethod `json:"AuthenticationMethod" example:"1"`
 	// The minimum required length for a password of any user when using internal auth mode
@@ -72,6 +74,7 @@ func (handler *Handler) settingsPublic(w http.ResponseWriter, r *http.Request) *
 func generatePublicSettings(appSettings *portainer.Settings) *publicSettingsResponse {
 	publicSettings := &publicSettingsResponse{
 		LogoURL:                   appSettings.LogoURL,
+		CustomLoginBanner:         appSettings.CustomLoginBanner,
 		AuthenticationMethod:      appSettings.AuthenticationMethod,
 		RequiredPasswordLength:    appSettings.InternalAuthSettings.RequiredPasswordLength,
 		EnableEdgeComputeFeatures: appSettings.EnableEdgeComputeFeatures,
