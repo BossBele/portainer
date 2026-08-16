@@ -1,5 +1,5 @@
 export function RoleViewModel(id, name, description, authorizations) {
-  this.ID = id;
+  this.Id = id;
   this.Name = name;
   this.Description = description;
   this.Authorizations = authorizations;

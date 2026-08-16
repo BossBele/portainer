@@ -65,7 +65,7 @@ class PorAccessManagementController {
       return false;
     }
 
-    return role.ID !== RoleTypes.STANDARD;
+    return role.Id !== RoleTypes.STANDARD;
   }
 
   roleLabel(role) {
@@ -93,7 +93,7 @@ class PorAccessManagementController {
       this.roles = _.orderBy(roles, 'Priority', 'asc');
       this.formValues = {
         multiselectOutput: [],
-        selectedRole: this.roles.find((role) => !this.isRoleLimitedToBE(role)),
+        selectedRole: this.roles.find((role) => role.Id === RoleTypes.STANDARD) || this.roles[0],
       };
 
       const data = await this.AccessService.accesses(entity, parent, this.roles);
