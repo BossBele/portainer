@@ -34,6 +34,9 @@ export function Switch({
   className,
 }: Props) {
   const limitedToBE = isLimitedToBE(featureId);
+  if (limitedToBE) {
+    return null;
+  }
 
   return (
     <>

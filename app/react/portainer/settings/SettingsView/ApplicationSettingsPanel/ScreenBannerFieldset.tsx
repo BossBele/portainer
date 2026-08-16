@@ -7,10 +7,15 @@ import { TextArea } from '@@/form-components/Input/Textarea';
 import { SwitchField } from '@@/form-components/SwitchField';
 
 import { useToggledValue } from '../useToggledValue';
+import { isLimitedToBE } from '@/react/portainer/feature-flags/feature-flags.service';
 
 export function ScreenBannerFieldset() {
   const [{ name }, { error }] = useField<string>('loginBanner');
   const [isEnabled, setIsEnabled] = useToggledValue('loginBanner');
+
+  if (isLimitedToBE(FeatureId.CUSTOM_LOGIN_BANNER)) {
+    return null;
+  }
 
   return (
     <>
