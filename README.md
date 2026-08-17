@@ -1,3 +1,16 @@
+# ⚠️ MODIFIED VERSION - NOT OFFICIAL PORTAINER
+
+**This is a modified fork of Portainer Community Edition with RBAC roles and custom login banner enabled.**
+
+- **Original Project:** [Portainer CE](https://github.com/portainer/portainer)
+- **Modified By:** BossBele
+- **Modifications:** See [MODIFICATIONS.md](./MODIFICATIONS.md) for detailed changes
+- **License:** [zlib License](./LICENSE) (same as original)
+
+> **⚠️ Important:** This is NOT the official Portainer release. If you need enterprise support or want to support the Portainer team, please use [Portainer Business Edition](https://www.portainer.io/take-3).
+
+---
+
 <p align="center">
   <img title="portainer" src='https://github.com/portainer/portainer/blob/develop/app/assets/images/portainer-github-banner.png?raw=true' />
 </p>

@@ -1,8 +1,8 @@
 FROM portainer/base AS production
 
-LABEL org.opencontainers.image.title="Portainer" \
-  org.opencontainers.image.description="Docker container management made simple, with the world’s most popular GUI-based container management platform." \
-  org.opencontainers.image.vendor="Portainer.io" \
+LABEL org.opencontainers.image.title="Portainer CE (Modified)" \
+  org.opencontainers.image.description="Modified version of Portainer Community Edition with RBAC roles and custom login banner enabled. Based on official Portainer CE." \
+  org.opencontainers.image.vendor="Modified by BossBele" \
   com.docker.desktop.extension.api.version=">= 0.2.2" \
   com.docker.desktop.extension.icon="https://portainer-io-assets.sfo2.cdn.digitaloceanspaces.com/logos/portainer.png" \
   com.docker.extension.screenshots="[{\"alt\": \"screenshot one\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-1.png\"},{\"alt\": \"screenshot two\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-2.png\"},{\"alt\": \"screenshot three\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-3.png\"},{\"alt\": \"screenshot four\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-4.png\"},{\"alt\": \"screenshot five\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-5.png\"},{\"alt\": \"screenshot six\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-6.png\"},{\"alt\": \"screenshot seven\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-7.png\"},{\"alt\": \"screenshot eight\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-8.png\"},{\"alt\": \"screenshot nine\", \"url\": \"https://portainer-io-assets.sfo2.digitaloceanspaces.com/screenshots/docker-extension-9.png\"}]" \
@@ -31,12 +31,15 @@ ARG BUILD_DATE=unspecified
 LABEL git_commit=$GIT_COMMIT \
   org.opencontainers.image.revision=$GIT_COMMIT \
   org.opencontainers.image.created=$BUILD_DATE \
-  org.opencontainers.image.title="Portainer CE" \
-  org.opencontainers.image.description="Portainer Community Edition server." \
-  org.opencontainers.image.vendor="Portainer.io" \
-  org.opencontainers.image.url="https://www.portainer.io" \
+  org.opencontainers.image.title="Portainer CE (Modified)" \
+  org.opencontainers.image.description="Modified Portainer Community Edition - RBAC roles and custom login banner enabled for CE. Based on official Portainer (https://github.com/portainer/portainer)." \
+  org.opencontainers.image.vendor="Modified by BossBele" \
+  org.opencontainers.image.url="https://github.com/BossBele/portainer" \
   org.opencontainers.image.documentation="https://docs.portainer.io" \
-  io.portainer.server="true"
+  org.opencontainers.image.source="https://github.com/BossBele/portainer" \
+  org.opencontainers.image.base.name="portainer/portainer-ce" \
+  io.portainer.server="true" \
+  io.portainer.modified="true"
 
 ENTRYPOINT ["/portainer"]
 
